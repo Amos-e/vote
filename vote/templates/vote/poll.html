@@ -1,0 +1,93 @@
+{% extends 'vote/index.html' %}
+
+{% block activate %}
+
+    {% if not poll.active %}
+        <a href="/vote/poll/activate/{{poll.id}}">Activate {{poll.title}}</a>
+    {% else %}
+        <a href="#" class="text-green-300">{{poll.title}} Active</a>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="w-full rounded-xl shadow-xs border mb-4 mt-8 mx-8">
+
+    <button id="print-btn" class="m-4 p-2 rounded bg-indigo-400 text-white px-8">Print</button>
+
+    <div id="print">
+
+    <table class="w-full whitespace-nowrap rounded-xl">
+
+        <thead class="sticky">
+            <tr class="text-xs font-bold tracking-wide text-left text-gray-500 border-b bg-row-even">
+                <th class="px-4 py-3">VOTER</th>
+                <th class="px-4 py-3">VOTED</th>
+            </tr>
+        </thead>
+
+        <tbody class="bg-white">
+            {% for vote in votes %}
+
+                <tr class="text-gray-700 border-t odd:bg-row-odd even:bg-row-even">
+
+                    <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                            <div class="w-10 h-10 rounded-full relative overflow-hidden">
+                                <img src="{{vote.voter.member.image.url}}" class="object-fill rounded-full absolute">
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-semibold">
+                                    {{vote.voter.member.full_names}}
+                                </p>
+                                <p class="text-sm tracking-wide text-gray-500">
+                                    {{vote.voter.member.code}}
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                            <div class="w-10 h-10 rounded-full relative overflow-hidden">
+                                <img src="{{vote.vote.member.image.url}}" class="object-fill rounded-full absolute">
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-semibold">
+                                    {{vote.vote.member.full_names}}
+                                </p>
+                                <p class="text-sm tracking-wide text-gray-500">
+                                    {{vote.vote.member.code}}
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    let printBtn = document.querySelector('button#print-btn');
+console.log(printBtn);
+printBtn.addEventListener('click', (event)=>{
+    printJS({
+        printable: 'print',
+        type: 'html',
+        style: "font-family: sans-serif",
+        css: ['/static/stylesheets/print.custom.css','/static/stylesheets/output.css'],
+    })
+});
+</script>
+{% endblock %}

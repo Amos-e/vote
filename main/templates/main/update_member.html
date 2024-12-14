@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+	<main id="main-body" class="h-full overflow-y-auto bg-bluish px-6">
+
+
+		<div class="w-full rounded-lg shadow-xs border bg-formbg py-2 pb-0 mb-6 mt-4">
+
+            <div class="bg-white py-2 border-b px-4">
+                <h2 class="text-base text-gray-600 font-semibold">Edit Member</h2>
+            </div>
+			{{form.errors}}
+			<form method="POST" action="{% url 'main:update_member' %}" id="member-add-form" class="form-control px-4 pt-4" enctype="multipart/form-data">
+				{% csrf_token %}
+				<input type="hidden" name="user-no-conflict" value="{{user}}">
+				
+				<div>
+					<div class="grid grid-cols-10 gap-10">
+						<div class="col-span-6">
+
+							<label for="id_code">Code</label>
+							{{form.code}}
+							{{form.code.errors}}
+
+							<label for="id_first_name">First Name</label>
+							{{form.first_name}}
+							{{form.first_name.errors}}
+
+							<label for="id_last_name">Last Name</label>
+							{{form.last_name}}
+							{{form.last_name.errors}}
+
+							<label for="id_contact">Contact</label>
+							{{form.contact}}
+							{{form.contact.errors}}
+
+							<label for="id_date_joined">Date Joined</label>
+							{{form.date_joined}}
+							{{form.date_joined.errors}}
+						</div>
+
+						<div class="col-span-4 pt-5 flex items-center">
+							{{form.image}}
+							{{form.image.errors}}
+						</div>
+
+						<div class="col-span-6 hidden">
+							<div class="flex">
+								{{form.marital_status}}
+							</div>
+							<div class="flex">
+								{{form.gender}}
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</form>
+
+            <div class="bg-white border-t py-3 flex items-center mt-4">
+                <input type="submit" form="member-add-form" value="Submit" class="bg-indigo-500 block text-white px-12 py-2 rounded-md ml-auto mr-4 cursor-pointer hover:bg-indigo-600 transition-colors">
+            </div>
+            
+		</div>
+	</main>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+	let dateField = document.querySelector("input[name='date_joined']");
+	let date = dateField.value.split(' ')[0];
+
+	dateField.setAttribute('type', 'date');
+	dateField.value = date;
+</script>
+
+{% endblock %}

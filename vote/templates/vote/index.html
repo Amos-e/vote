@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'fonts/inter/font.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/output.css' %}">
+    <script src="{% static 'scripts/print.min.js' %}"></script>
+    <script defer src="{% static 'scripts/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'scripts/feather.min.js' %}"></script>
+    <script src="{% static 'custom_scripts/vote_common.js' %}"></script>
+    <title>KYDI VOTE</title>
+</head>
+<body>
+
+    <div class="h-[100vh]">
+
+        <header class="h-[8vh] bg-[#3A72EC] grid grid-cols-12">
+
+            <section class="col-span-3 flex items-center px-8">
+                <h1 class="text-white">{{active_poll.title}}</h1>
+                <span class="w-2 h-2 bg-green-300 rounded-full ml-3 mt-1"></span>
+            </section>
+
+            <form id="search-name-form" class="col-span-6 flex items-center">
+
+                <input id="search-member-input" type="text" placeholder="Search Member" class="bg-indigo-400 border-none outline-indigo-800 py-2 px-2 text-white text-sm w-full rounded-tl rounded-bl rounded-tr-none rounded-br-none focus:ring-indigo-500 focus:ring-4 placeholder:text-white">
+
+                <button id="search-member-btn" class="py-1.5 px-3 rounded-tr rounded-br bg-indigo-300">
+                    <i data-feather="search" class="text-gray-100"></i>
+                </button>
+
+            </form>
+
+            <section class="col-span-3 flex items-center justify-center text-white">
+                
+                {% block activate  %}
+                {% endblock %}
+            </section>
+
+        </header>
+
+        <div class="h-[92vh] grid grid-cols-12">
+
+            <section class="col-span-3 h-full border-r p-4 px-8 overflow-y-hidden">
+                
+                <div>
+
+                    <div class="flex gap-2 items-center">
+                        <i data-feather="hexagon" class="w-5 h-5"></i>
+                        <h1 class="text-base font-bold text-slate-800">Actions</h1>
+                    </div>
+
+                    <a href="/vote" class="bg-indigo-200 py-2 px-4 rounded my-4 text-gray-500 block border-l-8 border-l-indigo-300">
+                        Vote
+                    </a>
+
+                    <a href="/vote/manage" class="bg-indigo-200 py-2 px-4 rounded my-4 text-gray-500 block border-l-8 border-l-indigo-300">
+                        Manage
+                    </a>
+
+                    <div class="flex gap-2 items-center mt-7">
+                        <i data-feather="flag" class="w-5 h-5"></i>
+                        <h1 class="text-base font-bold text-slate-800">Polls</h1>
+                    </div>
+
+                    <div>
+
+                        {% for poll in polls %}
+                            <a href="/vote/poll/{{poll.id}}" class="bg-indigo-200 py-2 px-4 rounded my-4 text-gray-500 block border-l-8 border-l-indigo-300">
+                                {{poll.title}}
+                            </a>
+                        
+                        {% empty %}
+                            <p class="bg-indigo-200 py-2 px-4 rounded my-4 text-gray-500 block border-l-8 border-l-indigo-300">The are currently no polls</p>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <button id="new-poll" class="bg-indigo-500 text-white px-4 py-2 w-full rounded inactive">
+                    New Poll
+                </button>
+
+            </section>
+
+            <section class="col-span-9 h-full relative flex bg-[#F9FAFB] overflow-y-scroll overflow-x-hidden">
+
+                {% block content %}
+                {% endblock %}
+
+                <div id="modal" class="absolute w-full h-full bg-black bg-opacity-20 hidden items-center justify-center">
+
+                    {% block modal %}
+                    {% endblock %}
+
+                    <div id="create-poll-container" class="w-4/6 h-4/6 bg-white rounded hidden shadow border">
+                        
+                        <div class="bg-slate-200 grow px-8 py-16">
+                            <h1 class="text-3xl">
+                                <span class="font-bold text-indigo-400">Create New</span><br>
+                                <span class="font-base text-indigo-500">Poll</span>
+                            </h1>
+                        </div>
+
+                        <div class="grow px-4 py-8">
+                            <input name="title" type="text" class="outline-none my-2 py-2 px-4 w-full rounded border" placeholder="Title">
+
+                            <textarea placeholder="Description" class="block my-4 h-36"></textarea>
+
+                            <button id="create-poll" class="w-full bg-indigo-400 py-2 px-4 rounded text-white">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</body>
+{% block scripts %}
+{% endblock %}
+
+<script>
+    feather.replace()
+</script>
+</html>

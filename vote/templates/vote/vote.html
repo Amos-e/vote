@@ -1,0 +1,66 @@
+{% extends 'vote/index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="min-w-[50%]  px-4 pt-12">
+
+    <div class="border bg-white border-gray-200 rounded py-4 h-5/6">
+
+        <div id="voter-image" class="w-56 h-56 bg-white rounded-full mx-auto my-8">
+            
+        </div>
+
+        <div class="px-8">
+            <select class="w-full px-4">
+                <option value="None">Select Member</option>
+            </select>
+
+            <button id="choose-btn" class="border py-2 px-4 w-full bg-indigo-400 text-gray-100 rounded">
+                Vote
+            </button>
+        </div>
+    
+    </div>
+
+</div>
+
+<div class="min-w-[50%] px-4 pt-12">
+
+    <div class="border bg-white border-gray-200 rounded py-4 h-5/6">
+
+        <div id="vote-image" class="w-56 h-56 bg-white rounded-full mx-auto my-8">
+        </div>
+
+        <div id="vote-details">
+            <h1 class="code text-center text-base font-bold text-gray-900">KYDI/000</h1>
+            <h1 class="name text-center text-2xl text-gray-900">John Doe</h1>
+        </div>
+    
+    </div>
+</div>
+
+{% endblock %}
+
+{% block modal %}
+    <div id="modal-inner" class="w-2/6 z-50 rounded hidden flex-col justify-between pb-2 px-2 pt-2">
+        <div id="loading" class="w-56 rounded-full overflow-hidden hidden items-center justify-center">
+            <img src="{% static 'images/loader2.gif' %}" alt="" class="">
+        </div>
+        <div id="vote-exists-error" class="w-[20rem] h-56 shadow bg-white rounded hidden flex-col justify-between pb-2 px-2 pt-2">
+        
+            <div class="text-indigo-300 h-2/4 flex center">
+                <i data-feather="info" class="h-16 w-16"></i>
+            </div>
+    
+            <p class="text-center">Record Already Exists</p>
+    
+            <button class="close-modal w-full bg-indigo-300 text-white py-2 rounded">Close</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'custom_scripts/vote.js' %}"></script>
+{% endblock %}
