@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'kydi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kydi',
-        'USER': 'kydi',
-        'PASSWORD': 'kydi@#123',
+        'NAME': 'vote',
+        'USER': 'vote',
+        'PASSWORD': 'vote@#123',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

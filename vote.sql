@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2024 at 09:00 PM
+-- Generation Time: Dec 15, 2024 at 11:20 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kydi`
+-- Database: `vote`
 --
 
 -- --------------------------------------------------------
@@ -196,7 +196,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(2, 'pbkdf2_sha256$260000$2Lotyu036mMC1cbsPZPfLv$6ADuSIZESJj/oRhI8Y023HLiazwRPpP0cVrLnKhaPLg=', '2024-12-14 18:45:49.023713', 1, 'admin', '', '', '', 1, 1, '2022-12-12 20:27:18.015381'),
+(2, 'pbkdf2_sha256$260000$2Lotyu036mMC1cbsPZPfLv$6ADuSIZESJj/oRhI8Y023HLiazwRPpP0cVrLnKhaPLg=', '2024-12-15 10:14:22.330700', 1, 'admin', '', '', '', 1, 1, '2022-12-12 20:27:18.015381'),
 (3, 'pbkdf2_sha256$260000$ReqyhJRDPtGZcjLSRZ4ZIv$UCR4TSK2UZ87RIt+czmUaemoe1njQ0WI6YMrz6Uk/hw=', NULL, 0, 'doreen', '', '', '', 0, 1, '2023-02-12 11:59:00.185709');
 
 -- --------------------------------------------------------
@@ -522,7 +522,10 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (276, '2024-12-13 18:23:13.542860', '9', 'KATO CHARLES MUDDUAWULIRA SSEBULIBA --> NABUNYA SHARON', 3, '', 26, 2),
 (277, '2024-12-14 18:18:59.430064', '12', 'NAMIIRO RAHMA MALAIKA --> NGABIRANO MONIC', 3, '', 26, 2),
 (278, '2024-12-14 18:18:59.441056', '11', 'KATO CHARLES MUDDUAWULIRA SSEBULIBA --> KIZANYE PEACE', 3, '', 26, 2),
-(279, '2024-12-14 20:00:04.129856', '13', 'SSEMAGANDA JOHN --> AINEMBABAZI DIANAH', 3, '', 26, 2);
+(279, '2024-12-14 20:00:04.129856', '13', 'SSEMAGANDA JOHN --> AINEMBABAZI DIANAH', 3, '', 26, 2),
+(280, '2024-12-14 20:02:37.880391', '14', 'KATO CHARLES MUDDUAWULIRA SSEBULIBA --> MUKANGA JADIDA', 3, '', 26, 2),
+(281, '2024-12-15 10:14:49.361913', '15', 'KATO CHARLES MUDDUAWULIRA SSEBULIBA --> NANDAGALA VIOLA', 3, '', 26, 2),
+(282, '2024-12-15 10:20:27.132168', '16', 'KATO CHARLES MUDDUAWULIRA SSEBULIBA --> NAKAKEMBO SARAH', 3, '', 26, 2);
 
 -- --------------------------------------------------------
 
@@ -732,7 +735,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('52vlyap3z3ior0a1bb3ykrcr7uqt7civ', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1rPAAP:ljgfaiA0WOyZFfwnWcxh0QInlG9NbwmMTHb7oVljhN8', '2024-01-28 23:45:25.376187'),
 ('54d33afsjkxwj9u0ectwah2ha2xe67bg', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1rg2yG:4T4tODDjq0QU9nSBJnkEHSxGfXe3RVeZIwVrQ14hKMU', '2024-03-15 13:30:40.309881'),
 ('7f31bdt0xwfhxo9vfqfuomqqnae90qfo', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1tLyxl:a1KMKMgnBpQaU-51wkYEXwoBSkrZGz0A3T2JtYN7ogQ', '2024-12-27 06:15:45.301870'),
-('9fusq18w81wd4gtbetqyf0s6dq5rqlue', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1tMX9B:QYi3Xy7vD99SgQZrhq2Vs9RyZppESAnQA6DeiNBdlJ0', '2024-12-28 18:45:49.034705'),
+('9fusq18w81wd4gtbetqyf0s6dq5rqlue', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1tMldm:3Y8hbGXWhJ9eL2ZZsB_JiiOtd5dh-_KBGFUdhflw3fk', '2024-12-29 10:14:22.340694'),
 ('9yxqsuj18vqsf80i1v8vpvzl8w3cu9vs', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1pAYBT:6mqFUzvnqRTZto-PhlAYkHT_DSmpDE0PieOu-jNMLKA', '2023-01-11 15:17:35.391021'),
 ('ahnbje1fz00w7r07cs0dpl78p8r5av3d', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1pTKSt:lz7IRmYjfOVnputbmgTjXExdH_noEfbnsP8VG9CmmcU', '2023-03-04 10:29:11.233013'),
 ('apx9ghvlyrc2jhsxk74r711m1qf78ijn', '.eJxVjDsOwjAQRO_iGlnY8SdLSc8ZrN21jQPIluKkQtydREoBzRTz3sxbBFyXEtae5jBFcRFanH47Qn6muoP4wHpvkltd5onkrsiDdnlrMb2uh_t3ULCXbW28V4qi0zgmm8hpNVjrMHMeB8haE3jPgGfaQjGZDOjQgDLgjCdi8fkC3_84DQ:1pG9bu:Ik28-0xWyLkReZWGVnRFik_5SkE5jtPxAryodk0lEvA', '2023-01-27 02:16:02.402182'),
@@ -14355,7 +14358,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -14487,7 +14490,7 @@ ALTER TABLE `vote_poll`
 -- AUTO_INCREMENT for table `vote_vote`
 --
 ALTER TABLE `vote_vote`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
